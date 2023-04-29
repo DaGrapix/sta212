@@ -1,16 +1,16 @@
 ## (a)
 Dapres le cours, on a:
 
-\begin{align}
-R\left(g^*\right) &=E_{X, Y}\left[\mathbb{1}\left\{g^*(X) \neq Y\right\}\right]\\
+\begin{align*}
+R\left(g^*\right) &=E_{X, Y}\left[1\left\{g^*(X) \neq Y\right\}\right]\\
 &=E_X\left[E_{Y \mid X}\left[{1}\left\{g^*(X)\neq Y\right]\right]\right. \\
 &=E_X\left[\frac{1}{2}-\left| \eta (X)-\frac{1}{2} \right|\right] \\
-\end{align}
+\end{align*}
 
-\begin{align}
+\begin{align*}
 \text { Donc } R\left(\hat{g}_n\right)-R\left(g^*\right)& =E_X\left[\frac{1}{2}-\left|\hat{\eta}(X)-\frac{1}{2}\right|\right]-E_X\left[\frac{1}{2}-\left|\eta(X)-\frac{1}{2}\right|\right]. \\
 & =E_X\left[\left|\eta(X)-\frac{1}{2}\right|-\left|\hat{\eta}(X)-\frac{1}{2}\right|\right] \\
-\end{align}
+\end{align*}
 
 Où  
 $$

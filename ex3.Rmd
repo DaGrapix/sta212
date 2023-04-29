@@ -1,5 +1,6 @@
 ## (a)
-Supposons que l'on soit à l'itération $t$ de l'algorithme, et tel que $m(\theta^t) \neq \emptyset$.\\
+Supposons que l'on soit à l'itération $t$ de l'algorithme, et tel que $m(\theta^t) \neq \emptyset$.
+
 Soit alors $i \in m(\theta^t)$
 
 D'une part:
@@ -24,9 +25,8 @@ Par Cauchy-Schwarz:
 
 Donc:
 
-\begin{equation}
+\begin{equation} \label{eq:geq}
     \boxed{||\theta^{t+1} ||_2 \geq t \delta}
-    \label{eq:geq}
 \end{equation}
 
 
@@ -45,12 +45,11 @@ D'autre part:
 
 Donc:
 
-\begin{equation}
+\begin{equation} \label{eq:leq}
   \boxed{||\theta^{t+1}||^2  \leq t R^2}
-  \label{eq:leq}
 \end{equation}
 
-Finalement, d'après \ref{geq} et \ref{leq}, on a :
+Finalement, d'après \ref{eq:geq} et \ref{eq:leq}, on a :
 $$
 t^2\delta^2 \leq ||\theta^{t+1}||^2  \leq t R^2
 $$
@@ -64,7 +63,7 @@ Ainsi, on a montré que si $m(\theta^t) \neq \emptyset$, alors $t \leq \frac{R^2
 
 
 
-Donc, au delà de $T=\frac{R^2}{\delta^2}$ itérations, $m(\theta^T)$ sera vide et l'algorithme aura convergé.
+Donc, au delà de $T=\frac{R^2}{\delta^2}$ itérations, $m(\theta^T)$ sera vide et l'algorithme aura donc convergé.
 
 
 

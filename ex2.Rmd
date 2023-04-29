@@ -7,13 +7,13 @@ On cherche à classifier les individus de $\mathcal{X}$ selon leur classe sur $\
 
 Soit $g^*$ l'estimateur de risque minimal associé à cette classification.
 
-\begin{align}
+\begin{align*}
 R(g^*)    &:= \mathbb{E}\left[{1}_{\{g^*(X) \neq Y \}}\right]\\
           &= \mathbb{E}_X \mathbb{E}_{Y|X=x}\left[{1}_{\{g^*(x) \neq Y \}}\right]\\
           &= 1 - \mathbb{E}_X \mathbb{E}_{Y|X=x}\left[{1}_{\{g^*(x) = Y \}}\right]\\
           &= 1 - \mathbb{E}_X \mathbb{P} \left[g^*(x) = Y\right]\\
 R(g^*)    &= 1 - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g^*(x) = i\}}\right]
-\end{align}
+\end{align*}
 
 
 Ce risque est minimal lorsque le terme dans l'espérance est maximal.
@@ -27,12 +27,12 @@ $$
 
 D'après le calcul précédent, et en utilisant les définitions de $g^*$ et de $g$:
 
-\begin{align}
+\begin{align*}
   R(g) - R(g^*)   &= 1 - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g(x) = i\}}\right] - 1 + \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g^*(x) = i\}}\right]\\
                   &= \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g^*(x) = i\}}\right] - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g(x) = i\}}\right]\\
                   &= \mathbb{E}_X \left[\underset{i\in \mathcal{Y}}{\max}\eta_i(x) - \mathbb{E}_X \eta_{g(x)} \right]\\
                   &= \mathbb{E}_X \left[\underset{i\in \mathcal{Y}}{\max}\eta_i(x) - \eta_{g(x)} \right]
-\end{align}
+\end{align*}
 
 Donc :
 $$
@@ -52,7 +52,7 @@ $$
 $$
 
 
-\begin{align}
+\begin{align*}
 R(\hat{g_n}) - R(g^*)     &= \mathbb{E}_X \left[ \underset{i\in \mathcal{Y}}{\max} \eta_i(x) - \eta_{\hat{g_n}(x)} \right]\\
                           &= \mathbb{E}_X\left[ \underset{i\in \mathcal{Y}}{\max}\eta_i(x) - \eta_{\hat{g_n}(x)} \right]
-\end{align}
+\end{align*}
