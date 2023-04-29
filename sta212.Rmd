@@ -2,12 +2,14 @@
 title: "STA212"
 author: "Anthony Kalaydjian - Mathieu Occhipinti"
 date: "2023-04-29"
+header-includes:
+   - \usepackage{amsmath}
+   - \usepackage{cancel}
 output:
   pdf_document: default
   html_document:
     df_print: paged
 ---
-
 
 ```{r, results='hide'}
 rm(list=ls())
@@ -18,92 +20,15 @@ set.seed(150)
 
 
 # Exercice 1 : Modélisation probabiliste
-
-
-Dapres le cours, on a:
-$$
-\begin{aligned}
-& R\left(g^*\right)=E_{X, Y}\left[\mathbb{1}\left\{g^*(X) \neq Y\right\}\right] \\
-& =E_X\left[E_{Y \mid X}\left[\mathbb{1}\left\{g^*(X)\neq Y\right]\right]\right. \\
-& =E_X\left[\frac{1}{2}-\left| \eta (X)-\frac{1}{2} \right|\right] \\
-& \text { Donc } R\left(\hat{g}_n\right)-R\left(g^*\right)=E_X\left[\frac{1}{2}-\left|\hat{\eta}(X)-\frac{1}{2}\right|\right]-E_X\left[\frac{1}{2}-\left|\eta(x)-\frac{1}{2}\right|\right]. \\
-& =E_X\left[\left|\eta(X)-\frac{1}{2}\right|-\left|\hat{\eta}(X)-\frac{1}{2}\right|\right] \\
-& \text { Où } \left\{ \begin{array}{l}
-|a|-|b|\leqslant||a|-|b||\leqslant| a-b|\leqslant 2|a-b| \\
-(a, b) \in \mathbb{R}^2
-\end{array}
-\right.   \\
-\newline 
-& \text { D'où } R\left(\hat{g}_n\right)-R\left(g^*\right) \leqslant 2 E_X\left[\left| \eta(x)-\hat{\eta}(X)\right| \right] \\
-&
-\end{aligned}
-$$
-
-## (b)
+```{r, child='ex1.Rmd'}
+```
 
 
 # Exercice 2 : Classification multi-classes 
-
-## (a)
-
-## (b)
+```{r, child='ex2.Rmd'}
+```
 
 
 # Exercice 3 : Implémentation d'un perceptron (origine des SVM)
-
-## (a)
-
-## (b)
-
-Importation des données :
-```{r load data}
-load(file="X_y.rda")
-df <- as.data.frame(cbind(X, y))
-names(df) <- c("V1", "V2", "V3", "y")
-plt1 <- ggplot(data=df) + aes(x=V1, y=V2, z=y, color=as.factor(y)) + geom_point()
-plt1
+```{r, child='ex3.Rmd'}
 ```
-
-La variable V3 est une variable d'intercept.
-
-
-**Algorithme perceptron**
-```{r}
-perceptron <- function(X, y){
-  theta <- c(0, 0, 0)
-  n <- nrow(X)
-  m <- seq(1, n)
-  counter <- 0
-  
-  while (length(m) != 0){
-    #sample a random item from m
-    index = sample(m, 1)
-    
-    #update theta
-    theta <- theta + y[index]*X[index,]
-    
-    #calculate the new m
-    temp <- sapply(X=seq(1, n), FUN=function(k) theta%*%X[k,])
-    criterion <- y*temp
-    m <- which(criterion<0)
-    counter <- counter + 1
-  }
-  return(list(theta=theta, count=counter))
-}
-
-res <- perceptron(X, y)
-theta.star <- res$theta
-count.star <- res$count
-
-theta.star
-count.star
-```
-L'algorithme converge en 5 itérations, et nous trouve la valeur de $\theta^* = (3.438710, 4.537851, 1.000000)^T$.
-
-
-**plot**
-```{r}
-plt1 + geom_abline(intercept=-theta.star[3]/theta.star[2], slope=-theta.star[1]/theta.star[2])
-```
-
-
