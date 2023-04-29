@@ -1,0 +1,8 @@
+## (a)
+
+## (b)
+
+Le résultat précédent nous indique que pour toute règle de classification
+empirique, $\hat{g_n}$ issue de l'estimateur $\hat{\eta}$ de $\eta$, son risque
+associé est borné par le risque minimal issu de la règle de Bayes $R(g^*)$ auquel
+on ajoute un terme d'erreur d'estimation de $\eta$.
