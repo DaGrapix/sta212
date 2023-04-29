@@ -1,14 +1,17 @@
 ## (a)
 
 Soit $\mathcal{Y}= \{1, ..., K\}$.
-On cherche à classifier des individus de $\mathcal{X}$ selont leur classe sur $\mathcal{Y}$.
+
+On cherche à classifier les individus de $\mathcal{X}$ selon leur classe sur $\mathcal{Y}$.
+
+
 Soit $g^*$ l'estimateur de risque minimal associé à cette classification.
 
 \begin{align}
-R(g^*)    &:= \mathbb{E}[{1}_{\{h(X) \neq Y \}}]\\
-          &= \mathbb{E}_X \mathbb{E}_{Y|X=x}[{1}_{\{h(x) \neq Y \}}]\\
-          &= 1 - \mathbb{E}_X \mathbb{E}_{Y|X=x}[{1}_{\{h(x) = Y \}}]\\
-          &= 1 - \mathbb{E}_X \mathbb{P} [h(x) = Y]\\
+R(g^*)    &:= \mathbb{E}\left[{1}_{\{g^*(X) \neq Y \}}\right]\\
+          &= \mathbb{E}_X \mathbb{E}_{Y|X=x}\left[{1}_{\{g^*(x) \neq Y \}}\right]\\
+          &= 1 - \mathbb{E}_X \mathbb{E}_{Y|X=x}\left[{1}_{\{g^*(x) = Y \}}\right]\\
+          &= 1 - \mathbb{E}_X \mathbb{P} \left[g^*(x) = Y\right]\\
 R(g^*)    &= 1 - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g^*(x) = i\}}\right]
 \end{align}
 
@@ -22,4 +25,34 @@ $$
 
 ## (b)
 
+D'après le calcul précédent, et en utilisant les définitions de $g^*$ et de $g$:
+
+\begin{align}
+  R(g) - R(g^*)   &= 1 - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g(x) = i\}}\right] - 1 + \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g^*(x) = i\}}\right]\\
+                  &= \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g^*(x) = i\}}\right] - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g(x) = i\}}\right]\\
+                  &= \mathbb{E}_X \left[\underset{i\in \mathcal{Y}}{\max}\eta_i(x) - \mathbb{E}_X \eta_{g(x)} \right]\\
+                  &= \mathbb{E}_X \left[\underset{i\in \mathcal{Y}}{\max}\eta_i(x) - \eta_{g(x)} \right]
+\end{align}
+
+Donc :
+$$
+\boxed{R(g) - R(g^*) = \mathbb{E}_X \left[\underset{i\in \mathcal{Y}}{\max}\eta_i(x) - \eta_{g(x)} \right]}
+$$
+
+
 ## (c)
+
+On considère maintenant la règle de classification $\hat{g_n}$ approchée de $g$ et issue de
+$\hat{\eta_i}$ un estimateur de $\eta_i$ obtenu à partir des données.
+
+La règle de classification est donc la suivante :
+
+$$
+\hat{g_n}(x) = \underset{j \in \mathcal{Y}}{\text{argmax }} \hat{\eta_j}(x)
+$$
+
+
+\begin{align}
+R(\hat{g_n}) - R(g^*)     &= \mathbb{E}_X \left[ \underset{i\in \mathcal{Y}}{\max} \eta_i(x) - \eta_{\hat{g_n}(x)} \right]\\
+                          &= \mathbb{E}_X\left[ \underset{i\in \mathcal{Y}}{\max}\eta_i(x) - \eta_{\hat{g_n}(x)} \right]
+\end{align}

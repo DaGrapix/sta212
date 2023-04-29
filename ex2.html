@@ -354,16 +354,18 @@ display: none;
 
 <div id="a" class="section level2">
 <h2>(a)</h2>
-<p>Soit <span class="math inline">\(\mathcal{Y}= \{1, ..., K\}\)</span>.
-On cherche à classifier des individus de <span class="math inline">\(\mathcal{X}\)</span> selont leur classe sur <span class="math inline">\(\mathcal{Y}\)</span>. Soit <span class="math inline">\(g^*\)</span> l’estimateur de risque minimal
-associé à cette classification.</p>
+<p>Soit <span class="math inline">\(\mathcal{Y}= \{1, ...,
+K\}\)</span>.</p>
+<p>On cherche à classifier les individus de <span class="math inline">\(\mathcal{X}\)</span> selon leur classe sur <span class="math inline">\(\mathcal{Y}\)</span>.</p>
+<p>Soit <span class="math inline">\(g^*\)</span> l’estimateur de risque
+minimal associé à cette classification.</p>
 <p><span class="math display">\[\begin{align}
-R(g^*)    &amp;:= \mathbb{E}[{1}_{\{h(X) \neq Y \}}]\\
-          &amp;= \mathbb{E}_X \mathbb{E}_{Y|X=x}[{1}_{\{h(x) \neq Y
-\}}]\\
-          &amp;= 1 - \mathbb{E}_X \mathbb{E}_{Y|X=x}[{1}_{\{h(x) = Y
-\}}]\\
-          &amp;= 1 - \mathbb{E}_X \mathbb{P} [h(x) = Y]\\
+R(g^*)    &amp;:= \mathbb{E}\left[{1}_{\{g^*(X) \neq Y \}}\right]\\
+          &amp;= \mathbb{E}_X \mathbb{E}_{Y|X=x}\left[{1}_{\{g^*(x) \neq
+Y \}}\right]\\
+          &amp;= 1 - \mathbb{E}_X \mathbb{E}_{Y|X=x}\left[{1}_{\{g^*(x)
+= Y \}}\right]\\
+          &amp;= 1 - \mathbb{E}_X \mathbb{P} \left[g^*(x) = Y\right]\\
 R(g^*)    &amp;= 1 - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x)
 {1}_{\{g^*(x) = i\}}\right]
 \end{align}\]</span></p>
@@ -375,9 +377,38 @@ maximal.</p>
 </div>
 <div id="b" class="section level2">
 <h2>(b)</h2>
+<p>D’après le calcul précédent, et en utilisant les définitions de <span class="math inline">\(g^*\)</span> et de <span class="math inline">\(g\)</span>:</p>
+<p><span class="math display">\[\begin{align}
+  R(g) - R(g^*)   &amp;= 1 - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x)
+{1}_{\{g(x) = i\}}\right] - 1 + \mathbb{E}_X \left[\sum_{i=1}^K
+\eta_i(x) {1}_{\{g^*(x) = i\}}\right]\\
+                  &amp;= \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x)
+{1}_{\{g^*(x) = i\}}\right] - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x)
+{1}_{\{g(x) = i\}}\right]\\
+                  &amp;= \mathbb{E}_X \left[\underset{i\in
+\mathcal{Y}}{\max}\eta_i(x) - \mathbb{E}_X \eta_{g(x)} \right]\\
+                  &amp;= \mathbb{E}_X \left[\underset{i\in
+\mathcal{Y}}{\max}\eta_i(x) - \eta_{g(x)} \right]
+\end{align}\]</span></p>
+<p>Donc : <span class="math display">\[
+\boxed{R(g) - R(g^*) = \mathbb{E}_X \left[\underset{i\in
+\mathcal{Y}}{\max}\eta_i(x) - \eta_{g(x)} \right]}
+\]</span></p>
 </div>
 <div id="c" class="section level2">
 <h2>(c)</h2>
+<p>On considère maintenant la règle de classification <span class="math inline">\(\hat{g_n}\)</span> approchée de <span class="math inline">\(g\)</span> et issue de <span class="math inline">\(\hat{\eta_i}\)</span> un estimateur de <span class="math inline">\(\eta_i\)</span> obtenu à partir des données.</p>
+<p>La règle de classification est donc la suivante :</p>
+<p><span class="math display">\[
+\hat{g_n}(x) = \underset{j \in \mathcal{Y}}{\text{argmax }}
+\hat{\eta_j}(x)
+\]</span></p>
+<p><span class="math display">\[\begin{align}
+R(\hat{g_n}) - R(g^*)     &amp;= \mathbb{E}_X \left[ \underset{i\in
+\mathcal{Y}}{\max} \eta_i(x) - \eta_{\hat{g_n}(x)} \right]\\
+                          &amp;= \mathbb{E}_X\left[ \underset{i\in
+\mathcal{Y}}{\max}\eta_i(x) - \eta_{\hat{g_n}(x)} \right]
+\end{align}\]</span></p>
 </div>
 
 
