@@ -9,11 +9,10 @@ output:
 ---
 
 
-```{r, include=FALSE}
+```{r, results='hide'}
 rm(list=ls())
 setwd(getwd())
 library(ggplot2)
-library(tidyverse)
 set.seed(150)
 ```
 
