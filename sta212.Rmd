@@ -3,14 +3,13 @@ title: "STA212"
 author: "Anthony Kalaydjian - Mathieu Occhipinti"
 date: "2023-04-29"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-```{r}
+
+```{r, include=FALSE}
 rm(list=ls())
 setwd(getwd())
 library(ggplot2)
