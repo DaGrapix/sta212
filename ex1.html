@@ -358,10 +358,9 @@ display: none;
 <p><span class="math display">\[\begin{align}
 R\left(g^*\right) &amp;=E_{X, Y}\left[\mathbb{1}\left\{g^*(X) \neq
 Y\right\}\right]\\
-&amp; =E_X\left[E_{Y \mid X}\left[\mathbb{1}\left\{g^*(X)\neq
+&amp;=E_X\left[E_{Y \mid X}\left[{1}\left\{g^*(X)\neq
 Y\right]\right]\right. \\
-&amp; =E_X\left[\frac{1}{2}-\left| \eta (X)-\frac{1}{2} \right|\right]
-\\
+&amp;=E_X\left[\frac{1}{2}-\left| \eta (X)-\frac{1}{2} \right|\right] \\
 \end{align}\]</span></p>
 <p><span class="math display">\[\begin{align}
 \text { Donc } R\left(\hat{g}_n\right)-R\left(g^*\right)&amp;
@@ -370,16 +369,17 @@ Y\right]\right]\right. \\
 &amp;
 =E_X\left[\left|\eta(X)-\frac{1}{2}\right|-\left|\hat{\eta}(X)-\frac{1}{2}\right|\right]
 \\
-&amp; \text { Où } \left\{ \begin{array}{l}
+\end{align}\]</span></p>
+<p>Où<br />
+<span class="math display">\[
+\begin{cases}
 |a|-|b|\leqslant||a|-|b||\leqslant| a-b|\leqslant 2| a-b| \\
 (a, b) \in \mathbb{R}^2
-\end{array}
-\right.   \\
-\newline
-\end{align}\]</span></p>
-<p>Donc <span class="math inline">\(\boxed{R\left(\hat{g}_n\right)-R\left(g^*\right)
+\end{cases}
+\]</span></p>
+<p>Donc <span class="math display">\[\boxed{R\left(\hat{g}_n\right)-R\left(g^*\right)
 \leqslant 2 E_X\left[\left| \eta(X)-\hat{\eta}(X)\right|
-\right]}\)</span></p>
+\right]}\]</span></p>
 </div>
 <div id="b" class="section level2">
 <h2>(b)</h2>
