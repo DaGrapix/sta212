@@ -3,7 +3,6 @@ title: "STA212"
 author: "Anthony Kalaydjian - Mathieu Occhipinti"
 date: "2023-04-29"
 header-includes:
-   - \usepackage{amsmath}
    - \usepackage{cancel}
 output:
   pdf_document: default
