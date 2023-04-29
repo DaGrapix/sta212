@@ -1,11 +1,14 @@
 ## (a)
 Dapres le cours, on a:
-$$
-\begin{aligned}
-& R\left(g^*\right)=E_{X, Y}\left[\mathbb{1}\left\{g^*(X) \neq Y\right\}\right] \\
+
+\begin{align}
+R\left(g^*\right) &=E_{X, Y}\left[\mathbb{1}\left\{g^*(X) \neq Y\right\}\right]\\
 & =E_X\left[E_{Y \mid X}\left[\mathbb{1}\left\{g^*(X)\neq Y\right]\right]\right. \\
 & =E_X\left[\frac{1}{2}-\left| \eta (X)-\frac{1}{2} \right|\right] \\
-& \text { Donc } R\left(\hat{g}_n\right)-R\left(g^*\right)=E_X\left[\frac{1}{2}-\left|\hat{\eta}(X)-\frac{1}{2}\right|\right]-E_X\left[\frac{1}{2}-\left|\eta(X)-\frac{1}{2}\right|\right]. \\
+\end{align}
+
+\begin{align}
+\text { Donc } R\left(\hat{g}_n\right)-R\left(g^*\right)& =E_X\left[\frac{1}{2}-\left|\hat{\eta}(X)-\frac{1}{2}\right|\right]-E_X\left[\frac{1}{2}-\left|\eta(X)-\frac{1}{2}\right|\right]. \\
 & =E_X\left[\left|\eta(X)-\frac{1}{2}\right|-\left|\hat{\eta}(X)-\frac{1}{2}\right|\right] \\
 & \text { Où } \left\{ \begin{array}{l}
 |a|-|b|\leqslant||a|-|b||\leqslant| a-b|\leqslant 2| a-b| \\
@@ -13,10 +16,10 @@ $$
 \end{array}
 \right.   \\
 \newline 
-& \text { D'où } R\left(\hat{g}_n\right)-R\left(g^*\right) \leqslant 2 E_X\left[\left| \eta(X)-\hat{\eta}(X)\right| \right] \\
-&
-\end{aligned}
-$$
+\end{align}
+
+Donc $\boxed{R\left(\hat{g}_n\right)-R\left(g^*\right) \leqslant 2 E_X\left[\left| \eta(X)-\hat{\eta}(X)\right| \right]}$
+
 ## (b)
 
 Le résultat précédent nous indique que pour toute règle de classification
