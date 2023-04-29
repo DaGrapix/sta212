@@ -23,6 +23,11 @@ set.seed(150)
 
 ## (b)
 
+Le résultat précédent nous indique que pour toute règle de classification
+empirique, $\hat{g_n}$ issue de l'estimateur $\hat{\eta}$ de $\eta$, son risque
+associé est borné par le risque minimal issu de la règle de Bayes $R(g^*)$ auquel
+on ajoute un terme d'erreur d'estimation de $\eta$.
+
 
 # Exercice 2 : Classification multi-classes 
 
@@ -30,10 +35,18 @@ set.seed(150)
 
 ## (b)
 
+## (c)
+
 
 # Exercice 3 : Implémentation d'un perceptron (origine des SVM)
 
 ## (a)
+
+$\theta^{t+1}^T \theta^* = (\theta^t + y^j x^j)^T \theta^*$
+$ = (\theta^t)^T\theta^* + y^j (x^j)^T\theta^*$
+$ > (\theta^t)^T\theta^* + $
+
+
 
 ## (b)
 
