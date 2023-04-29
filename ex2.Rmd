@@ -1,5 +1,25 @@
 ## (a)
 
+Soit $\mathcal{Y}= \{1, ..., K\}$.
+On cherche à classifier des individus de $\mathcal{X}$ selont leur classe sur $\mathcal{Y}$.
+Soit $g^*$ l'estimateur de risque minimal associé à cette classification.
+
+\begin{align}
+R(g^*)    &:= \mathbb{E}[{1}_{\{h(X) \neq Y \}}]\\
+          &= \mathbb{E}_X \mathbb{E}_{Y|X=x}[{1}_{\{h(x) \neq Y \}}]\\
+          &= 1 - \mathbb{E}_X \mathbb{E}_{Y|X=x}[{1}_{\{h(x) = Y \}}]\\
+          &= 1 - \mathbb{E}_X \mathbb{P} [h(x) = Y]\\
+R(g^*)    &= 1 - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g^*(x) = i\}}\right]
+\end{align}
+
+
+Ce risque est minimal lorsque le terme dans l'espérance est maximal.
+
+Donc :
+$$
+\boxed{g^*(x) = \underset{i \in \mathcal{Y}}{\text{argmax }} \eta_i(x)}
+$$
+
 ## (b)
 
 ## (c)

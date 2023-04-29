@@ -118,6 +118,8 @@ L'algorithme converge en 5 itérations, et nous trouve la valeur de $\theta^* = 
 
 
 ### plot
+
+Le plot montre que l'on a bien séparé les deux classes à l'aide de notre hyperplan.
 ```{r}
 plt1 + geom_abline(intercept=-theta.star[3]/theta.star[2], slope=-theta.star[1]/theta.star[2])
 ```
