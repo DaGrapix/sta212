@@ -1,5 +1,5 @@
 ---
-title: "STA212"
+title: "STA212 - Méthodes de simulation statistique"
 author: "Anthony Kalaydjian - Mathieu Occhipinti"
 date: "2023-04-29"
 header-includes:

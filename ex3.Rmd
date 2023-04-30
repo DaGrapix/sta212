@@ -1,7 +1,7 @@
 ## (a)
-Supposons que l'on soit à l'itération $t$ de l'algorithme, et tel que $m(\theta^t) \neq \emptyset$.
+Supposons que l'on soit à l'itération $t$ de l'algorithme et que $m(\theta^t) \neq \emptyset$.
 
-Soit alors $i \in m(\theta^t)$
+Soit alors $i \in m(\theta^t)$ un indice choisi au hasard.
 
 D'une part:
 
@@ -11,7 +11,7 @@ D'une part:
     & \geq \langle \theta^{t}, \theta^* \rangle + ||\theta^*||_2 \delta
 \end{align*}
 
-
+\newpage
 
 Par Cauchy-Schwarz:
 
@@ -63,10 +63,11 @@ Ainsi, on a montré que si $m(\theta^t) \neq \emptyset$, alors $t \leq \frac{R^2
 
 
 
-Donc, au delà de $T=\frac{R^2}{\delta^2}$ itérations, $m(\theta^T)$ sera vide et l'algorithme aura donc convergé.
+Donc, au delà de $T=\frac{R^2}{\delta^2}$ itérations, $m(\theta^t)$ sera vide et l'algorithme aura donc convergé.
 
+On conclut donc que lorsque le problème est séparable, l'algorithme de perceptron converge en au plus $T=\frac{R^2}{\delta^2}$ itérations.
 
-
+\newpage
 
 ## (b)
 
@@ -75,12 +76,16 @@ Importation des données :
 load(file="X_y.rda")
 df <- as.data.frame(cbind(X, y))
 names(df) <- c("V1", "V2", "V3", "y")
-plt1 <- ggplot(data=df) + aes(x=V1, y=V2, z=y, color=as.factor(y)) + geom_point()
+```
+
+```{r plot_data, fig.align='center', fig.cap="\\label{fig:plot_data} Affichage des données"}
+plt1 <- ggplot(data=df) + aes(x=V1, y=V2, z=y, color=as.factor(y)) + geom_point() + labs(color = "Classe")
 plt1
 ```
 
 La variable V3 est une variable d'intercept.
 
+\newpage
 
 **Algorithme perceptron**
 ```{r}
@@ -119,6 +124,6 @@ L'algorithme converge en 5 itérations, et nous trouve la valeur de $\theta^* = 
 ### plot
 
 Le plot montre que l'on a bien séparé les deux classes à l'aide de notre hyperplan.
-```{r}
+```{r separation, fig.align='center', fig.cap="\\label{fig:separation} Droite séparatrice"}
 plt1 + geom_abline(intercept=-theta.star[3]/theta.star[2], slope=-theta.star[1]/theta.star[2])
 ```

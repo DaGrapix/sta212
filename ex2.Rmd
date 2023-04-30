@@ -30,7 +30,7 @@ D'après le calcul précédent, et en utilisant les définitions de $g^*$ et de 
 \begin{align*}
   R(g) - R(g^*)   &= 1 - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g(x) = i\}}\right] - 1 + \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g^*(x) = i\}}\right]\\
                   &= \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g^*(x) = i\}}\right] - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g(x) = i\}}\right]\\
-                  &= \mathbb{E}_X \left[\underset{i\in \mathcal{Y}}{\max}\eta_i(x) - \mathbb{E}_X \eta_{g(x)} \right]\\
+                  &= \mathbb{E}_X \left[\underset{i\in \mathcal{Y}}{\max}\eta_i(x)\right] - \mathbb{E}_X \left[\eta_{g(x)} \right]\\
                   &= \mathbb{E}_X \left[\underset{i\in \mathcal{Y}}{\max}\eta_i(x) - \eta_{g(x)} \right]
 \end{align*}
 
@@ -86,3 +86,6 @@ Ceci achève la preuve du lemme, on peut ainsi l'appliquer dans notre cas. \newl
 
 
 Finalement, $E_X\left[\max _{i \in Y}(\eta_i(X))-\max _{j\in Y}(\hat{\eta}_j(X))\right] \leqslant 2 E_X\left[\max _{i \in Y} \left| \eta_i(X)-\hat{\eta}_i(X)\right|\right]$
+
+Donc :
+$$\boxed{R(\hat{g_n}) - R(g^*) \leqslant 2 E_X\left[\max _{i \in Y} \left| \eta_i(X)-\hat{\eta}_i(X)\right|\right]}$$
