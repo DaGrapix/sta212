@@ -39,7 +39,7 @@ D'autre part:
                     &\leq ||\theta^t||^2 + R^2\\
                     &\leq ||\theta^{t-1}||^2 + 2 R^2\\
                     &\leq ...\\
-                    &\leq \cancel{||\theta^{0}||^2} + t R^2\\
+                    &\leq \underset{\theta^0=0}{\cancel{||\theta^{0}||^2}} + t R^2\\
 ||\theta^{t+1}||^2  &\leq t R^2
 \end{align*}
 
@@ -90,8 +90,9 @@ La variable V3 est une variable d'intercept.
 **Algorithme perceptron**
 ```{r}
 perceptron <- function(X, y){
-  theta <- c(0, 0, 0)
   n <- nrow(X)
+  p <- ncol(X)
+  theta <- rep(0, times=p)
   m <- seq(1, n)
   counter <- 0
   

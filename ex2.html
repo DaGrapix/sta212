@@ -386,7 +386,8 @@ maximal.</p>
 {1}_{\{g^*(x) = i\}}\right] - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x)
 {1}_{\{g(x) = i\}}\right]\\
                   &amp;= \mathbb{E}_X \left[\underset{i\in
-\mathcal{Y}}{\max}\eta_i(x) - \mathbb{E}_X \eta_{g(x)} \right]\\
+\mathcal{Y}}{\max}\eta_i(x)\right] - \mathbb{E}_X \left[\eta_{g(x)}
+\right]\\
                   &amp;= \mathbb{E}_X \left[\underset{i\in
 \mathcal{Y}}{\max}\eta_i(x) - \eta_{g(x)} \right]
 \end{align*}\]</span></p>
@@ -408,13 +409,15 @@ maximal.</p>
 \text { On a } &amp; E_X\left[\max _{i \in
 y}(\eta_i(X))-\hat{\eta}_{\hat{g}_n(X)}\right] \\
 &amp; =E_X\left[\max _{i \in y} \eta_i(X)-\max _{j \in
-y}(\hat{\eta}(x))\right] \quad \text{par définition}
+y}(\hat{\eta}_j(x))\right] \quad \text{par définition}
 \end{aligned}
-\]</span> Lemme: Montrons que : <span class="math display">\[
-\max _{x \in X} f(x)-\max_{y \in X} g(y) \leqslant \max _{z \in
-X}|f(z)-g(z)|
-\]</span> <span class="math inline">\(\forall x \in X, \quad f(x)-g(x)
-\leqslant|f(x)-g(x)|\)</span></p>
+\]</span></p>
+<p><span class="math inline">\(\textbf{Lemme: } \qquad \qquad \qquad
+\boxed{\max _{x \in X} f(x)-\max_{y \in X} g(y) \leqslant \max _{z \in
+X}|f(z)-g(z)|}\)</span></p>
+<p><strong><em>démonstration:</em></strong></p>
+<p><span class="math inline">\(\forall f, g, \quad \forall x \in X,
+\quad f(x)-g(x) \leqslant|f(x)-g(x)|\)</span></p>
 <p>De plus, <span class="math inline">\(\quad-\max _{x \in X}(g(x))
 \leqslant-g(x)\)</span></p>
 <p>D’où, <span class="math display">\[
@@ -431,12 +434,16 @@ de x}}
 \max_{y\in X} \left( \left| f(y)-g(y) \right| \right)
 \end{aligned}
 \]</span></p>
+<p><span class="math inline">\(\hfill \blacksquare\)</span></p>
 <p>Ceci achève la preuve du lemme, on peut ainsi l’appliquer dans notre
 cas. </p>
 <p>Finalement, <span class="math inline">\(E_X\left[\max _{i \in
 Y}(\eta_i(X))-\max _{j\in Y}(\hat{\eta}_j(X))\right] \leqslant 2
 E_X\left[\max _{i \in Y} \left|
 \eta_i(X)-\hat{\eta}_i(X)\right|\right]\)</span></p>
+<p>Donc : <span class="math display">\[\boxed{R(\hat{g_n}) - R(g^*)
+\leqslant 2 E_X\left[\max _{i \in Y} \left|
+\eta_i(X)-\hat{\eta}_i(X)\right|\right]}\]</span></p>
 </div>
 
 
