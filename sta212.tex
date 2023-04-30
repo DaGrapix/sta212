@@ -91,7 +91,6 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-\usepackage{amsmath}
 \usepackage{cancel}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
@@ -137,23 +136,32 @@ probabiliste}\label{exercice-1-moduxe9lisation-probabiliste}}
 \hypertarget{a}{%
 \subsection{(a)}\label{a}}
 
-Dapres le cours, on a: \[
-\begin{aligned}
-& R\left(g^*\right)=E_{X, Y}\left[\mathbb{1}\left\{g^*(X) \neq Y\right\}\right] \\
-& =E_X\left[E_{Y \mid X}\left[\mathbb{1}\left\{g^*(X)\neq Y\right]\right]\right. \\
-& =E_X\left[\frac{1}{2}-\left| \eta (X)-\frac{1}{2} \right|\right] \\
-& \text { Donc } R\left(\hat{g}_n\right)-R\left(g^*\right)=E_X\left[\frac{1}{2}-\left|\hat{\eta}(X)-\frac{1}{2}\right|\right]-E_X\left[\frac{1}{2}-\left|\eta(X)-\frac{1}{2}\right|\right]. \\
+Dapres le cours, on a:
+
+\begin{align*}
+R\left(g^*\right) &=E_{X, Y}\left[1\left\{g^*(X) \neq Y\right\}\right]\\
+&=E_X\left[E_{Y \mid X}\left[{1}\left\{g^*(X)\neq Y\right]\right]\right. \\
+&=E_X\left[\frac{1}{2}-\left| \eta (X)-\frac{1}{2} \right|\right] \\
+\end{align*}
+
+\begin{align*}
+\text { Donc } R\left(\hat{g}_n\right)-R\left(g^*\right)& =E_X\left[\frac{1}{2}-\left|\hat{\eta}(X)-\frac{1}{2}\right|\right]-E_X\left[\frac{1}{2}-\left|\eta(X)-\frac{1}{2}\right|\right]. \\
 & =E_X\left[\left|\eta(X)-\frac{1}{2}\right|-\left|\hat{\eta}(X)-\frac{1}{2}\right|\right] \\
-& \text { Où } \left\{ \begin{array}{l}
+\end{align*}
+
+Où\\
+\[
+\begin{cases}
 |a|-|b|\leqslant||a|-|b||\leqslant| a-b|\leqslant 2| a-b| \\
 (a, b) \in \mathbb{R}^2
-\end{array}
-\right.   \\
-\newline 
-& \text { D'où } R\left(\hat{g}_n\right)-R\left(g^*\right) \leqslant 2 E_X\left[\left| \eta(X)-\hat{\eta}(X)\right| \right] \\
-&
-\end{aligned}
-\] \#\# (b)
+\end{cases}
+\]
+
+Donc
+\[\boxed{R\left(\hat{g}_n\right)-R\left(g^*\right) \leqslant 2 E_X\left[\left| \eta(X)-\hat{\eta}(X)\right| \right]}\]
+
+\hypertarget{b}{%
+\subsection{(b)}\label{b}}
 
 Le résultat précédent nous indique que pour toute règle de
 classification empirique, \(\hat{g_n}\) issue de l'estimateur
@@ -168,11 +176,62 @@ multi-classes}\label{exercice-2-classification-multi-classes}}
 \hypertarget{a-1}{%
 \subsection{(a)}\label{a-1}}
 
-\hypertarget{b}{%
-\subsection{(b)}\label{b}}
+Soit \(\mathcal{Y}= \{1, ..., K\}\).
+
+On cherche à classifier les individus de \(\mathcal{X}\) selon leur
+classe sur \(\mathcal{Y}\).
+
+Soit \(g^*\) l'estimateur de risque minimal associé à cette
+classification.
+
+\begin{align*}
+R(g^*)    &:= \mathbb{E}\left[{1}_{\{g^*(X) \neq Y \}}\right]\\
+          &= \mathbb{E}_X \mathbb{E}_{Y|X=x}\left[{1}_{\{g^*(x) \neq Y \}}\right]\\
+          &= 1 - \mathbb{E}_X \mathbb{E}_{Y|X=x}\left[{1}_{\{g^*(x) = Y \}}\right]\\
+          &= 1 - \mathbb{E}_X \mathbb{P} \left[g^*(x) = Y\right]\\
+R(g^*)    &= 1 - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g^*(x) = i\}}\right]
+\end{align*}
+
+Ce risque est minimal lorsque le terme dans l'espérance est maximal.
+
+Donc : \[
+\boxed{g^*(x) = \underset{i \in \mathcal{Y}}{\text{argmax }} \eta_i(x)}
+\]
+
+\hypertarget{b-1}{%
+\subsection{(b)}\label{b-1}}
+
+D'après le calcul précédent, et en utilisant les définitions de \(g^*\)
+et de \(g\):
+
+\begin{align*}
+  R(g) - R(g^*)   &= 1 - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g(x) = i\}}\right] - 1 + \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g^*(x) = i\}}\right]\\
+                  &= \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g^*(x) = i\}}\right] - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x) {1}_{\{g(x) = i\}}\right]\\
+                  &= \mathbb{E}_X \left[\underset{i\in \mathcal{Y}}{\max}\eta_i(x) - \mathbb{E}_X \eta_{g(x)} \right]\\
+                  &= \mathbb{E}_X \left[\underset{i\in \mathcal{Y}}{\max}\eta_i(x) - \eta_{g(x)} \right]
+\end{align*}
+
+Donc : \[
+\boxed{R(g) - R(g^*) = \mathbb{E}_X \left[\underset{i\in \mathcal{Y}}{\max}\eta_i(x) - \eta_{g(x)} \right]}
+\]
 
 \hypertarget{c}{%
 \subsection{(c)}\label{c}}
+
+On considère maintenant la règle de classification \(\hat{g_n}\)
+approchée de \(g\) et issue de \(\hat{\eta_i}\) un estimateur de
+\(\eta_i\) obtenu à partir des données.
+
+La règle de classification est donc la suivante :
+
+\[
+\hat{g_n}(x) = \underset{j \in \mathcal{Y}}{\text{argmax }} \hat{\eta_j}(x)
+\]
+
+\begin{align*}
+R(\hat{g_n}) - R(g^*)     &= \mathbb{E}_X \left[ \underset{i\in \mathcal{Y}}{\max} \eta_i(x) - \eta_{\hat{g_n}(x)} \right]\\
+                          &= \mathbb{E}_X\left[ \underset{i\in \mathcal{Y}}{\max}\eta_i(x) - \eta_{\hat{g_n}(x)} \right]
+\end{align*}
 
 \hypertarget{exercice-3-impluxe9mentation-dun-perceptron-origine-des-svm}{%
 \section{Exercice 3 : Implémentation d'un perceptron (origine des
@@ -182,8 +241,9 @@ SVM)}\label{exercice-3-impluxe9mentation-dun-perceptron-origine-des-svm}}
 \subsection{(a)}\label{a-2}}
 
 Supposons que l'on soit à l'itération \(t\) de l'algorithme, et tel que
-\(m(\theta^t) \neq \emptyset\).\textbackslash{} Soit alors
-\(i \in m(\theta^t)\)
+\(m(\theta^t) \neq \emptyset\).
+
+Soit alors \(i \in m(\theta^t)\)
 
 D'une part:
 
@@ -205,9 +265,8 @@ Par Cauchy-Schwarz:
 
 Donc:
 
-\begin{equation}
+\begin{equation} \label{eq:geq}
     \boxed{||\theta^{t+1} ||_2 \geq t \delta}
-    \label{eq:geq}
 \end{equation}
 
 D'autre part:
@@ -225,12 +284,11 @@ D'autre part:
 
 Donc:
 
-\begin{equation}
+\begin{equation} \label{eq:leq}
   \boxed{||\theta^{t+1}||^2  \leq t R^2}
-  \label{eq:leq}
 \end{equation}
 
-Finalement, d'après \ref{geq} et \ref{leq}, on a : \[
+Finalement, d'après \ref{eq:geq} et \ref{eq:leq}, on a : \[
 t^2\delta^2 \leq ||\theta^{t+1}||^2  \leq t R^2
 \]
 
@@ -240,10 +298,10 @@ Ainsi, on a montré que si \(m(\theta^t) \neq \emptyset\), alors
 \(t \leq \frac{R^2}{\delta^2}\)
 
 Donc, au delà de \(T=\frac{R^2}{\delta^2}\) itérations, \(m(\theta^T)\)
-sera vide et l'algorithme aura convergé.
+sera vide et l'algorithme aura donc convergé.
 
-\hypertarget{b-1}{%
-\subsection{(b)}\label{b-1}}
+\hypertarget{b-2}{%
+\subsection{(b)}\label{b-2}}
 
 Importation des données :
 
@@ -314,6 +372,9 @@ L'algorithme converge en 5 itérations, et nous trouve la valeur de
 
 \hypertarget{plot}{%
 \subsubsection{plot}\label{plot}}
+
+Le plot montre que l'on a bien séparé les deux classes à l'aide de notre
+hyperplan.
 
 \begin{Shaded}
 \begin{Highlighting}[]

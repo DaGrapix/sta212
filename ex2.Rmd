@@ -52,7 +52,37 @@ $$
 $$
 
 
-\begin{align*}
-R(\hat{g_n}) - R(g^*)     &= \mathbb{E}_X \left[ \underset{i\in \mathcal{Y}}{\max} \eta_i(x) - \eta_{\hat{g_n}(x)} \right]\\
-                          &= \mathbb{E}_X\left[ \underset{i\in \mathcal{Y}}{\max}\eta_i(x) - \eta_{\hat{g_n}(x)} \right]
-\end{align*}
+$$
+\begin{aligned}
+\text { On a } & E_X\left[\max _{i \in y}(\eta_i(X))-\hat{\eta}_{\hat{g}_n(X)}\right] \\
+& =E_X\left[\max _{i \in y} \eta_i(X)-\max _{j \in y}(\hat{\eta}(x))\right] \quad \text{par définition}
+\end{aligned}
+$$
+Lemme: Montrons que : 
+$$
+\max _{x \in X} f(x)-\max_{y \in X} g(y) \leqslant \max _{z \in X}|f(z)-g(z)|
+$$
+$\forall x \in X, \quad f(x)-g(x) \leqslant|f(x)-g(x)|$ 
+
+
+De plus, $\quad-\max _{x \in X}(g(x)) \leqslant-g(x)$
+
+
+D'où,
+$$
+\begin {aligned}
+f(x)-\max_{x\in X}(g(x)) \leqslant \left| f(x)-g(x) \right| \leqslant \underbrace{\max_{y\in X} \left| f(y)-g(y)\right |}_{\text{indépendant de x}}
+\end{aligned}
+$$
+Donc,
+$$
+\begin{aligned}
+\max_{z \in X} \left( f(z)-\max_{x \in X}(g(x)) \right) \leqslant \max_{y \in X}\left( \left| f(y)-g(y) \right| \right) \\
+\text{D'où} \quad \max_{z\in X}(f(z))-\max_{x \in X}(g(x)) \leqslant \max_{y\in X} \left( \left| f(y)-g(y) \right| \right)
+\end{aligned}
+$$
+
+Ceci achève la preuve du lemme, on peut ainsi l'appliquer dans notre cas. \newline
+
+
+Finalement, $E_X\left[\max _{i \in Y}(\eta_i(X))-\max _{j\in Y}(\hat{\eta}_j(X))\right] \leqslant 2 E_X\left[\max _{i \in Y} \left| \eta_i(X)-\hat{\eta}_i(X)\right|\right]$

@@ -359,7 +359,7 @@ K\}\)</span>.</p>
 <p>On cherche à classifier les individus de <span class="math inline">\(\mathcal{X}\)</span> selon leur classe sur <span class="math inline">\(\mathcal{Y}\)</span>.</p>
 <p>Soit <span class="math inline">\(g^*\)</span> l’estimateur de risque
 minimal associé à cette classification.</p>
-<p><span class="math display">\[\begin{align}
+<p><span class="math display">\[\begin{align*}
 R(g^*)    &amp;:= \mathbb{E}\left[{1}_{\{g^*(X) \neq Y \}}\right]\\
           &amp;= \mathbb{E}_X \mathbb{E}_{Y|X=x}\left[{1}_{\{g^*(x) \neq
 Y \}}\right]\\
@@ -368,7 +368,7 @@ Y \}}\right]\\
           &amp;= 1 - \mathbb{E}_X \mathbb{P} \left[g^*(x) = Y\right]\\
 R(g^*)    &amp;= 1 - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x)
 {1}_{\{g^*(x) = i\}}\right]
-\end{align}\]</span></p>
+\end{align*}\]</span></p>
 <p>Ce risque est minimal lorsque le terme dans l’espérance est
 maximal.</p>
 <p>Donc : <span class="math display">\[
@@ -378,7 +378,7 @@ maximal.</p>
 <div id="b" class="section level2">
 <h2>(b)</h2>
 <p>D’après le calcul précédent, et en utilisant les définitions de <span class="math inline">\(g^*\)</span> et de <span class="math inline">\(g\)</span>:</p>
-<p><span class="math display">\[\begin{align}
+<p><span class="math display">\[\begin{align*}
   R(g) - R(g^*)   &amp;= 1 - \mathbb{E}_X \left[\sum_{i=1}^K \eta_i(x)
 {1}_{\{g(x) = i\}}\right] - 1 + \mathbb{E}_X \left[\sum_{i=1}^K
 \eta_i(x) {1}_{\{g^*(x) = i\}}\right]\\
@@ -389,7 +389,7 @@ maximal.</p>
 \mathcal{Y}}{\max}\eta_i(x) - \mathbb{E}_X \eta_{g(x)} \right]\\
                   &amp;= \mathbb{E}_X \left[\underset{i\in
 \mathcal{Y}}{\max}\eta_i(x) - \eta_{g(x)} \right]
-\end{align}\]</span></p>
+\end{align*}\]</span></p>
 <p>Donc : <span class="math display">\[
 \boxed{R(g) - R(g^*) = \mathbb{E}_X \left[\underset{i\in
 \mathcal{Y}}{\max}\eta_i(x) - \eta_{g(x)} \right]}
@@ -403,12 +403,40 @@ maximal.</p>
 \hat{g_n}(x) = \underset{j \in \mathcal{Y}}{\text{argmax }}
 \hat{\eta_j}(x)
 \]</span></p>
-<p><span class="math display">\[\begin{align}
-R(\hat{g_n}) - R(g^*)     &amp;= \mathbb{E}_X \left[ \underset{i\in
-\mathcal{Y}}{\max} \eta_i(x) - \eta_{\hat{g_n}(x)} \right]\\
-                          &amp;= \mathbb{E}_X\left[ \underset{i\in
-\mathcal{Y}}{\max}\eta_i(x) - \eta_{\hat{g_n}(x)} \right]
-\end{align}\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\text { On a } &amp; E_X\left[\max _{i \in
+y}(\eta_i(X))-\hat{\eta}_{\hat{g}_n(X)}\right] \\
+&amp; =E_X\left[\max _{i \in y} \eta_i(X)-\max _{j \in
+y}(\hat{\eta}(x))\right] \quad \text{par définition}
+\end{aligned}
+\]</span> Lemme: Montrons que : <span class="math display">\[
+\max _{x \in X} f(x)-\max_{y \in X} g(y) \leqslant \max _{z \in
+X}|f(z)-g(z)|
+\]</span> <span class="math inline">\(\forall x \in X, \quad f(x)-g(x)
+\leqslant|f(x)-g(x)|\)</span></p>
+<p>De plus, <span class="math inline">\(\quad-\max _{x \in X}(g(x))
+\leqslant-g(x)\)</span></p>
+<p>D’où, <span class="math display">\[
+\begin {aligned}
+f(x)-\max_{x\in X}(g(x)) \leqslant \left| f(x)-g(x) \right| \leqslant
+\underbrace{\max_{y\in X} \left| f(y)-g(y)\right |}_{\text{indépendant
+de x}}
+\end{aligned}
+\]</span> Donc, <span class="math display">\[
+\begin{aligned}
+\max_{z \in X} \left( f(z)-\max_{x \in X}(g(x)) \right) \leqslant
+\max_{y \in X}\left( \left| f(y)-g(y) \right| \right) \\
+\text{D&#39;où} \quad \max_{z\in X}(f(z))-\max_{x \in X}(g(x)) \leqslant
+\max_{y\in X} \left( \left| f(y)-g(y) \right| \right)
+\end{aligned}
+\]</span></p>
+<p>Ceci achève la preuve du lemme, on peut ainsi l’appliquer dans notre
+cas. </p>
+<p>Finalement, <span class="math inline">\(E_X\left[\max _{i \in
+Y}(\eta_i(X))-\max _{j\in Y}(\hat{\eta}_j(X))\right] \leqslant 2
+E_X\left[\max _{i \in Y} \left|
+\eta_i(X)-\hat{\eta}_i(X)\right|\right]\)</span></p>
 </div>
 
 
